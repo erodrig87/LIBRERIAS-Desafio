@@ -5,11 +5,11 @@ const readFormInput = () => {
     let validado = true;
     let fecha = new Date(`${document.getElementById("inputDate").value}T00:00`);//.value);    
     fecha = fecha.toLocaleDateString();
-    if(fecha=="Invalid Date") validado = false;
+    if(fecha=="Invalid Date") {validado = false;}
     let categoria = (document.getElementById("inputTypeExpense").value).toUpperCase();
-    if(categoria=="") validado = false;
+    if(categoria == ""){ validado = false;}
     let valor = parseFloat(document.getElementById("inputValueExpense").value);
-    if(valor=="NaN") validado = false;
+    if(isNaN(valor)){ validado = false;}
     let remito = document.getElementById("inputTicketNumberExpense").value;
     let pago = document.getElementById("inputPaymentMethod").value;
 
@@ -21,14 +21,22 @@ const readFormInput = () => {
         addRowTable(nuevoGasto);
         makeFilterCategory(arrExpenses);
         if(document.getElementById("alertMsg"))document.getElementById("alertMsg").remove();
+        
 
     } else { 
-        nodoform = document.getElementById("inputExpenseForm");
+       /*nodoform = document.getElementById("inputExpenseForm");
         nodo = document.createElement("div");
         nodo.id = "alertMsg";
         nodo.classList = "alert alert-warning"; nodo.style.visibility = "visible";
         nodo.innerHTML = "Los datos ingresados no son validos";
         nodoform.appendChild(nodo);
+        */
+        Swal.fire({
+            icon: 'error',
+            title: 'Datos no validos',
+            text: 'Ingresar Fecha, Categoria y valor gasto en forma correcta',
+            //footer: '<a href="">Why do I have this issue?</a>'
+          })
     }
 }
 

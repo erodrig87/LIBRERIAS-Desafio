@@ -64,9 +64,20 @@ function randomColor() {
         yAxes: [{
           ticks: {
             beginAtZero: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Valor de Gasto'
+          }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Fecha'
           }
         }]
       },
+      
       legend: {
         display: false
       }
